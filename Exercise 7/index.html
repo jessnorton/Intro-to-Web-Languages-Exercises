@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 7 - JavaScript</title>
+</head>
+
+<body>
+    <input type="text" id="txt-price" placeholder="Enter the price of the item">
+    <input type="text" id="txt-quantity" placeholder="Enter the quantity of the item">
+    <button id="btn-submit">Calculate</button>
+    <div id="output"></div>
+
+    <script>
+        // Get references to the HTML elements
+        var priceInput = document.getElementById('txt-price');
+        var quantityInput = document.getElementById('txt-quantity');
+        var submitBtn = document.getElementById('btn-submit');
+        var output = document.getElementById('output');
+
+        // Add click event listener to the button
+        submitBtn.addEventListener('click', function () {
+
+            // Get the input values as numbers
+            var price = priceInput.value;
+            var quantity = quantityInput.value;
+            price = +price; quantity = +quantity;
+
+            // Check if input is valid
+            if (Number.isNaN(price) || Number.isNaN(quantity)) {
+                output.innerHTML = 'Invalid input'; return;
+            }
+
+            // Calculate total price and round it to two decimal places
+            var totalPrice = price * quantity;
+            totalPrice = Math.round(totalPrice * 100) / 100;
+
+            // Display the result
+            output.innerHTML = quantity + ' items at $' + price + ' each is $' + totalPrice;
+        });
+    </script>
+</body>
+
+</html>
